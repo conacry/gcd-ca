@@ -10,12 +10,15 @@ spring:
     maximumPoolSize: 30
     minimumIdle: 5
     dataSourceProperties:
-      serverName: localhost
-      portNumber: 5433
+      serverName: ${DATABASE_HOST}
+      portNumber: 5432
       databaseName: gcd_db
   flyway:
     enabled: true
     locations: "classpath:db/migration"
+
+server:
+  port: 8099
 
 open-api:
   title: gcd
