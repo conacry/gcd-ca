@@ -50,13 +50,13 @@ public class TaskController {
             parameters = {
                     @Parameter(
                             name = "n1",
-                            description = "First integer param",
+                            description = "The first integer param",
                             example = "100",
                             in = ParameterIn.QUERY,
                             required = true
                     ),
                     @Parameter(name = "n2",
-                            description = "Second integer param",
+                            description = "The second integer param",
                             example = "40",
                             in = ParameterIn.QUERY,
                             required = true

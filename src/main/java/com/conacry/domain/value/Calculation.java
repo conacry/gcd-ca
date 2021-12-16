@@ -5,6 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.Objects;
 
+/**
+ * Value object "Calculation"
+ * <p>
+ * Calculation contains input params
+ * and calculation result
+ */
 @Slf4j
 @Getter
 public final class Calculation {
