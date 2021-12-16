@@ -154,5 +154,5 @@ Temporary Items
 .apdisk
 
 # Container volume
-!/appdata/
-!/dbdata/
+appdata/
+dbdata/

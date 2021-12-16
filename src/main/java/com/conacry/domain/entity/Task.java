@@ -1,6 +1,6 @@
 package com.conacry.domain.entity;
 
-import com.conacry.domain.event.CalculatedTaskEvent;
+import com.conacry.domain.event.TaskCalculatedEvent;
 import com.conacry.domain.event.TaskCreatedEvent;
 import com.conacry.domain.value.Calculation;
 import com.conacry.domain.value.GcdAlgorithm;
@@ -12,6 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.UUID;
 
+/**
+ * Task is core entity of app context
+ */
 @Slf4j
 @Getter
 public class Task implements Entity {
@@ -48,7 +51,7 @@ public class Task implements Entity {
         this.result = result;
     }
 
-    public ResultWithEvent<Task, CalculatedTaskEvent> calculate(Calculation calculation) {
+    public ResultWithEvent<Task, TaskCalculatedEvent> calculate(Calculation calculation) {
         if (calculation.getResult() == null) {
             log.warn("Calculation must have result");
             throw new IllegalStateException("Calculation must have result");
@@ -56,13 +59,13 @@ public class Task implements Entity {
 
         this.result = calculation.getResult();
         this.status = TaskStatus.DONE;
-        return ResultWithEvent.of(this, new CalculatedTaskEvent(this.identifier, this.n1, this.n2, this.result));
+        return ResultWithEvent.of(this, new TaskCalculatedEvent(this.identifier, this.n1, this.n2, this.result));
     }
 
-    public ResultWithEvent<Task, CalculatedTaskEvent> calculate(GcdAlgorithm algorithm) {
+    public ResultWithEvent<Task, TaskCalculatedEvent> calculate(GcdAlgorithm algorithm) {
         this.result = algorithm.execute(n1.getValue(), n2.getValue());
         this.status = TaskStatus.DONE;
 
-        return ResultWithEvent.of(this, new CalculatedTaskEvent(this.identifier, this.n1, this.n2, this.result));
+        return ResultWithEvent.of(this, new TaskCalculatedEvent(this.identifier, this.n1, this.n2, this.result));
     }
 }

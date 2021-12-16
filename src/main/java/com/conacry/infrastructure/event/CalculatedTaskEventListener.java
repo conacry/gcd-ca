@@ -1,7 +1,7 @@
 package com.conacry.infrastructure.event;
 
 import com.conacry.application.usecase.SaveCalculation;
-import com.conacry.domain.event.CalculatedTaskEvent;
+import com.conacry.domain.event.TaskCalculatedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +14,8 @@ public class CalculatedTaskEventListener {
         this.saveCalculation = saveCalculation;
     }
 
-    @EventListener(classes = { CalculatedTaskEvent.class })
-    public void handleEvent(CalculatedTaskEvent event) {
+    @EventListener(classes = { TaskCalculatedEvent.class })
+    public void handleEvent(TaskCalculatedEvent event) {
         saveCalculation.execute(event.getN1(), event.getN2(), event.getResult());
     }
 }

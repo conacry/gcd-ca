@@ -6,6 +6,12 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.Objects;
 
+/**
+ * Object value "Param"
+ * <p>
+ * Param wrap input integer and
+ * do all necessary validation
+ */
 @Slf4j
 @Getter
 public class Param implements ValueObject {
